@@ -174,4 +174,8 @@
   .app-main-container {
     padding: 0; /* Remove padding to prevent double spacing */
   }
+
+  .message-input {
+    font-size: 0.8rem;
+  }
 }
