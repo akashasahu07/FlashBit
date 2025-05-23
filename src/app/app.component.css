@@ -167,7 +167,7 @@
 =========================== */
 @media (max-width: 640px) {
   .gemini-chatbot-container {
-    height: 100vh;
+    height: 94vh;
     margin: 1rem; /* Margin for spacing from screen edges */
   }
 
