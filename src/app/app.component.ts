@@ -89,7 +89,7 @@ export class AppComponent implements OnInit, OnDestroy {
       }
     ];
 
-    this.addMessage('Hello, sir/madam. How may I be of assistance today?', 'bot');
+    this.addMessage('Hello, What can I help with?', 'bot');
   }
 
   sendMessage(): void {
