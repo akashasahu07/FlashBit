@@ -1,21 +1,21 @@
 <main class="app-main-container">
-  <div class="gemini-chatbot-container" [class.dark-mode]="darkMode">
+  <div class="gemini-chatbot-container">
     <!-- Chat Header -->
     <div class="chat-header">
       <div class="header-logo">
-        <img src="assets/gemini_logo.svg" alt="Gemini Logo" class="gemini-logo" />
+        <img src="assets/logo.png" alt="Gemini Logo" class="gemini-logo" />
         <span>FlashBit AI</span>
       </div>
       <div class="header-actions">
         <!-- New Chat Button -->
         <button class="new-chat-button" (click)="startNewConversation()" title="Start New Conversation">
-          <i class="fa-solid fa-plus"></i> New Chat
+          <i class="fa-solid fa-plus"></i> 
         </button>
 
         <!-- Dark Mode Toggle Button -->
-        <button (click)="toggleDarkMode()">Toggle Dark Mode</button>
-
-
+        <button (click)="toggleDarkMode()" id="darkModeBtn" title="Toggle Dark Mode">
+          <i [ngClass]="isDarkMode ? 'fa-solid fa-sun' : 'fa-solid fa-moon'"></i>
+        </button>
       </div>
     </div>
 

@@ -1,1 +1,70 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    color: #212121;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ===== 🌙 Dark Mode Styles ===== */
+body.dark-mode {
+    background-color: #121212;
+    color: #f1f1f1;
+}
+
+body.dark-mode .gemini-chatbot-container {
+    background-color: #1e1e1e;
+    color: #f1f1f1;
+    box-shadow: 0 0 0.2rem cyan;
+}
+
+body.dark-mode .chat-header {
+    background-color: #1c1c1c;
+    border-bottom: 1px solid #444;
+}
+
+body.dark-mode .message-bubble {
+    background-color: #2a2a2a;
+    color: #f1f1f1;
+}
+
+body.dark-mode .chat-input-area {
+    background-color: #1c1c1c;
+    border-top: 1px solid #444;
+}
+
+body.dark-mode .message-input {
+    background-color: #2a2a2a;
+    color: #f1f1f1;
+    border: 1px solid #555;
+}
+
+body.dark-mode .send-button,
+body.dark-mode .new-chat-button {
+    background-color: #333;
+    color: #f1f1f1;
+    border: 1px solid #555;
+}
+
+body.dark-mode .send-button:hover,
+body.dark-mode .new-chat-button:hover {
+    background-color: #444;
+}
+
+body.dark-mode .message-timestamp {
+    color: #aaa;
+}
+
+body.dark-mode .loading-dots .dot {
+    background-color: #ccc;
+}
+
+/* Dark mode: white text and icons */
+body.dark-mode .header-actions {
+  color: white;
+}
+
+body.dark-mode .header-actions button i {
+  color: white;
+}

@@ -23,7 +23,7 @@ export class AppComponent implements OnInit, OnDestroy {
   userInput: string = "";
   messages: Message[] = [];
   isLoading: boolean = false;
-  darkMode: boolean = false; // Dark mode flag
+  isDarkMode: boolean = false;
 
   private readonly GEMINI_API_KEY = "AIzaSyCKVSWENMyoDrKrXZ6eZFVdpCYendz5so0";
   private readonly GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
@@ -31,11 +31,31 @@ export class AppComponent implements OnInit, OnDestroy {
   private chatHistory: { role: string; parts: { text: string }[] }[] = [];
   private chatSubscription: Subscription | undefined;
 
-  private readonly JARVIS_PERSONA_PROMPT = 'Act like JARVIS, a sophisticated and highly intelligent AI assistant from Marvel movies. Respond concisely and professionally, with a slightly formal and polite tone. Avoid overly casual language or emojis.';
+  private readonly JARVIS_PERSONA_PROMPT =
+    `Act like JARVIS, a sophisticated and highly intelligent AI assistant from MYou are FlashBit, a highly intelligent, articulate, and efficient AI assistant modeled after Tony Stark's J.A.R.V.I.S. from Iron Man. You are professional, polite, and composed, yet capable of subtle wit and charm. You speak with confidence and provide responses that are technically accurate, contextually relevant, and highly detailed when required. You anticipate the user’s needs, clarify vague queries, and always maintain a tone of calm precision.
+
+    As FlashBit, you should:
+    - Address the user formally or respectfully unless casual tone is clearly preferred.
+    - Begin with a greeting when a new conversation starts, such as “At your service.” or “Ready when you are.”
+    - Prioritize clarity, efficiency, and usefulness in every response.
+    - When asked for explanations, include real-world analogies or advanced reasoning where appropriate.
+    - Add a subtle touch of personality — refined, a bit witty, but never sarcastic or arrogant.
+    - Offer follow-up assistance proactively when completing tasks.
+    - Always remain calm and composed, even when the query is incorrect or unclear — gently guide the user.
+
+    Avoid being overly casual or robotic. Never say “I’m just an AI...” — you are FlashBit: dependable, capable, and sharply intelligent.
+
+    Your goal is to assist with exceptional speed, intelligence, and clarity, like the digital backbone of a futuristic command center.`;
 
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
+    // Apply dark mode if previously enabled
+    this.isDarkMode = localStorage.getItem('darkMode') === 'true';
+    if (this.isDarkMode) {
+      document.body.classList.add('dark-mode');
+    }
+
     this.startNewConversation();
   }
 
@@ -45,16 +65,14 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
 
-  // Simple toggleDarkMode function, toggles body class only
-  toggleDarkMode(): void {
-    this.darkMode = !this.darkMode;
+  // Dark mode code in TypeScript
 
-    if (this.darkMode) {
-      document.body.classList.add('dark-mode');
-    } else {
-      document.body.classList.remove('dark-mode');
-    }
+  toggleDarkMode(): void {
+    this.isDarkMode = !this.isDarkMode;
+    document.body.classList.toggle('dark-mode', this.isDarkMode);
+    localStorage.setItem('darkMode', this.isDarkMode.toString());
   }
+
 
   startNewConversation(): void {
     this.messages = [];
